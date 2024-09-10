@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чё поделать?</title>
+    <link rel="icon" href="/static/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/static/js/scripts.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>🎲 Чё поделать❓</h1>
+    <form id="recommendationForm">
+        <label for="gender">Выберите ваш пол:</label>
+        <select id="gender" name="gender">
+            <option value="Мужской">Мужской</option>
+            <option value="Женский">Женский</option>
+            <option value="Другой">Другой</option>
+        </select>
+
+        <label for="age">Выберите ваш возраст:</label>
+        <select id="age" name="age">
+            <option value="Детский">Детский</option>
+            <option value="Подросток">Подросток</option>
+            <option value="Взрослый">Взрослый</option>
+            <option value="Пожилой">Пожилой</option>
+        </select>
+
+        <label for="activity">Выберите тип активности:</label>
+        <select id="activity" name="activity">
+            <option value="Активный отдых">Активный отдых</option>
+            <option value="Спокойный отдых">Спокойный отдых</option>
+            <option value="Интеллектуальный досуг">Интеллектуальный досуг</option>
+            <option value="Творческое занятие">Творческое занятие</option>
+        </select>
+
+        <label for="mood">Выберите ваше настроение:</label>
+        <select id="mood" name="mood">
+            <option value="Веселое">Веселое</option>
+            <option value="Спокойное">Спокойное</option>
+            <option value="Уставшее">Уставшее</option>
+            <option value="Тревожное">Тревожное</option>
+        </select>
+
+        <label for="budget">Выберите ваш бюджет:</label>
+        <select id="budget" name="budget">
+            <option value="low">Низкий</option>
+            <option value="medium">Средний</option>
+            <option value="high">Высокий</option>
+        </select>
+
+        <button type="button" id="getRecommendationButton">Получить рекомендацию 🎁</button>
+        <!-- Индикатор загрузки -->
+        <div id="loadingIndicator" style="display:none;">Загрузка...</div>
+    </form>
+
+    <div id="recommendationOutput">
+        <h3>Рекомендация для вас:</h3>
+        <p id="recommendationText"></p>
+    </div>
+</div>
+</body>
+</html>

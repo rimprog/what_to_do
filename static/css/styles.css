@@ -1,0 +1,101 @@
+body {
+    background-image: url('/static/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    filter: grayscale(20%);
+    opacity: 0.9;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px;
+    margin: 100px auto;
+    color: #FFF;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+label {
+    color: #f0f0f0;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+select {
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    background-color: #333;
+    color: #FFF;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+select:focus {
+    border-color: #FF6347;
+}
+
+button {
+    background-color: #FF6347;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(255, 99, 71, 0.4);
+}
+
+button:hover {
+    background-color: #FF4500;
+    transform: translateY(-2px) scale(1.05);
+}
+
+#recommendationOutput {
+    opacity: 0;
+    transition: opacity 1s ease-in-out, transform 0.5s;
+    margin-top: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(50, 50, 50, 0.8));
+    border: 2px solid #FF6347;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    color: #FFFFFF;
+    transform: translateY(20px);
+}
+
+#recommendationOutput.show {
+    opacity: 1; /* Устанавливает видимость блока */
+    transform: translateY(0); /* Плавное появление */
+}
+
+#recommendationOutput h3 {
+    color: #FF6347; /* Цвет заголовка */
+    font-weight: bold;
+}
+
+#recommendationOutput p {
+    margin: 10px 0;
+    line-height: 1.6;
+    color: #FFFFFF; /* Устанавливаем цвет текста белым */
+}
