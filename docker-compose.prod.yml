@@ -4,6 +4,8 @@ services:
   nginx:
     image: valian/docker-nginx-auto-ssl
     restart: on-failure
+    networks:
+      - what_to_do_app_network
     ports:
       - 80:80
       - 443:443
@@ -12,6 +14,8 @@ services:
     environment:
       ALLOWED_DOMAINS: ${DOMAIN_NAME}
       SITES: ${DOMAIN_NAME}=what_to_do_app:5000
+    depends_on:
+      - what_to_do_app
     deploy:
       resources:
         limits:
