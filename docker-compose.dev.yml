@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  what_to_do_app:
+    build: .
+    networks:
+      - what_to_do_app_network
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/opt/apps/what_to_do_app
+    env_file: .env
+    command: /bin/bash -c " \
+      uvicorn app.main:app --forwarded-allow-ips '*' --proxy-headers --host 0.0.0.0 --port 5000 --reload"
+
+networks:
+  what_to_do_app_network:
+    name: what_to_do_app_network
+    driver: bridge
+
+volumes:
+  ssl_data:
+    name: what_to_do_ssl_volume

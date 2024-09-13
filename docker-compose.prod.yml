@@ -1,0 +1,42 @@
+version: '3.7'
+
+services:
+  nginx:
+    image: valian/docker-nginx-auto-ssl
+    restart: on-failure
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ssl_data:/etc/resty-auto-ssl
+    environment:
+      ALLOWED_DOMAINS: ${DOMAIN_NAME}
+      SITES: ${DOMAIN_NAME}=localhost:5000
+    deploy:
+      resources:
+        limits:
+          cpus: '0.4'
+          memory: 256M
+
+  what_to_do_app:
+    build: .
+    networks:
+      - what_to_do_app_network
+    restart: unless-stopped
+    env_file: .env
+    command: /bin/bash -c " \
+      uvicorn app.main:app --forwarded-allow-ips '*' --proxy-headers --host 0.0.0.0 --port 5000 --reload"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+
+networks:
+  what_to_do_app_network:
+    name: what_to_do_app_network
+    driver: bridge
+
+volumes:
+  ssl_data:
+    name: what_to_do_ssl_volume
