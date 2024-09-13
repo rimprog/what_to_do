@@ -11,7 +11,7 @@ services:
       - ssl_data:/etc/resty-auto-ssl
     environment:
       ALLOWED_DOMAINS: ${DOMAIN_NAME}
-      SITES: ${DOMAIN_NAME}=localhost:5000
+      SITES: ${DOMAIN_NAME}=what_to_do_app:5000
     deploy:
       resources:
         limits:
