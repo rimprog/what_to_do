@@ -7,3 +7,4 @@ misc
 *.crt
 *.key
 *.cnf
+certbot
