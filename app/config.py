@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     PROXY: str = None  # По умолчанию None, если прокси не используется
     OPEN_AI_API_KEY: str
     DOMAIN_NAME: str
+    DEVELOPER_EMAIL: str
 
     # Путь к файлу настроек
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
