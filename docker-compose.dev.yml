@@ -1,8 +1,23 @@
 version: '3.7'
 
 services:
+  nginx:
+    container_name: nginx
+    restart: unless-stopped
+    image: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - what_to_do_app_network
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - what_to_do_app
+
   what_to_do_app:
     build: .
+    container_name: what_to_do_app
     networks:
       - what_to_do_app_network
     restart: unless-stopped
@@ -18,7 +33,3 @@ networks:
   what_to_do_app_network:
     name: what_to_do_app_network
     driver: bridge
-
-volumes:
-  ssl_data:
-    name: what_to_do_ssl_volume

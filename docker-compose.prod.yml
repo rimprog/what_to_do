@@ -2,18 +2,16 @@ version: '3.7'
 
 services:
   nginx:
-    image: valian/docker-nginx-auto-ssl
-    restart: on-failure
+    container_name: nginx
+    restart: unless-stopped
+    image: nginx
+    ports:
+      - "80:80"
+      - "443:443"
     networks:
       - what_to_do_app_network
-    ports:
-      - 80:80
-      - 443:443
     volumes:
-      - ssl_data:/etc/resty-auto-ssl
-    environment:
-      ALLOWED_DOMAINS: ${DOMAIN_NAME}
-      SITES: ${DOMAIN_NAME}=what_to_do_app:5000
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - what_to_do_app
     deploy:
@@ -24,6 +22,7 @@ services:
 
   what_to_do_app:
     build: .
+    container_name: what_to_do_app
     networks:
       - what_to_do_app_network
     restart: unless-stopped
@@ -40,7 +39,3 @@ networks:
   what_to_do_app_network:
     name: what_to_do_app_network
     driver: bridge
-
-volumes:
-  ssl_data:
-    name: what_to_do_ssl_volume
